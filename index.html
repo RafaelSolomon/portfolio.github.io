@@ -30,8 +30,22 @@
     h2 { margin-top: 0; }
     .cta-buttons { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
     .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; }
-    .btn-primary { background: var(--primary-gradient); }
+    .btn-primary { 
+      background: var(--primary-gradient); 
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
     .btn-secondary { background: #374151; }
+    .cv-center { text-align: center; }
+    .cv-viewer-center { text-align: center; }
+    .cv-iframe {
+      border: none;
+      box-shadow: var(--shadow);
+      border-radius: var(--card-radius);
+    }
     footer { text-align: center; padding: 20px; color: #6b7280; font-size: 0.9em; }
     @media(max-width: 600px) { header { padding: 20px 10px; } }
   </style>
@@ -53,9 +67,32 @@
     <a href="#contact">Contact</a>
   </nav>
   <section id="about">
-    <h2>About Me</h2>
-    <p>I translate AI into measurable business value for regulated financial and healthcare teams, focusing on ChatGPT, prompt engineering, and compliance-aware AI workflows. My expertise includes medical records review and NY WCB claims adjudication with a track record of accuracy and compliance.</p>
-  </section>
+  <h2>About Me</h2>
+  <p>I translate AI into measurable business value for regulated financial and healthcare teams, focusing on ChatGPT, prompt engineering, and compliance-aware AI workflows. My expertise includes medical records review and NY WCB claims adjudication with a track record of accuracy and compliance.</p>
+</section>
+    <iframe
+      src="Jan_Angelo_Bacucang_CV.pdf"
+      width="100%"
+      height="600px"
+      class="cv-iframe"
+      title="Jan Angelo Bacucang CV"
+    ></iframe>
+      width="100%"
+      height="600px"
+      class="btn btn-primary"
+    >
+      📄 Download CV
+    </a>
+    <a
+      href="Jan_Angelo_Bacucang_CV.pdf"
+      download="Jan_Angelo_Bacucang_CV.pdf"
+      class="btn btn-primary"
+    >
+      📄 Download CV
+    </a>
+  </div>
+</section>
+
   <section id="services">
     <h2>Services</h2>
     <ul>
@@ -79,7 +116,7 @@
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:jabacucang@gmail.com">jabacucang@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/jbacucang" target="_blank">linkedin.com/in/jbacucang</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/jbacucang" target="_blank" rel="noopener">linkedin.com/in/jbacucang</a></p>
     <p>Phone: <a href="tel:+639991452713">+63 999 145 2713</a></p>
   </section>
   <footer>

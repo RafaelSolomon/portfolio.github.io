@@ -12,7 +12,33 @@
   <meta name="geo.position" content="14.5547;121.0244" />
   <meta name="ICBM" content="14.5547, 121.0244" />
   <link rel="canonical" href="https://example.com/" />
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #4f46e5, #06b6d4);
+      --card-bg: rgba(255,255,255,0.9);
+      --card-radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f3f4f6; color: #333; }
+    header { background: var(--primary-gradient); color: white; padding: 40px 20px; text-align: center; }
+    header img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid white; box-shadow: var(--shadow); object-fit: cover; }
+    nav { position: sticky; top: 0; background: #1f2937; padding: 10px; display: flex; justify-content: center; gap: 20px; z-index: 1000; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { max-width: 1000px; margin: 20px auto; padding: 20px; background: var(--card-bg); border-radius: var(--card-radius); box-shadow: var(--shadow); }
+    h2 { margin-top: 0; }
+    .cta-buttons { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; }
+    .btn-primary { background: var(--primary-gradient); }
+    .btn-secondary { background: #374151; }
+    .cv-iframe { border: none; box-shadow: var(--shadow); border-radius: var(--card-radius); }
+    footer { text-align: center; padding: 20px; color: #6b7280; font-size: 0.9em; }
+    @media(max-width: 600px) {
+      header { padding: 20px 10px; }
+      .cv-iframe { height: 400px; }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -20,7 +46,7 @@
     <h1>Jan Angelo Bacucang, PhRN</h1>
     <p>AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="CV folder/Jan Angelo Bacucang CV-2025.pdf" download>Download CV</a>
+      <a class="btn btn-primary" href="Jan%20Angelo%20Bacucang%20CV-2025.pdf" download>Download CV</a>
       <a class="btn btn-secondary" href="https://example.com/my-intro-video.mp4" target="_blank">Watch My Introduction</a>
     </div>
   </header>
@@ -41,7 +67,7 @@
   <section id="cv" class="cv-center">
     <h2>My CV</h2>
     <iframe
-      src="CV folder/Jan Angelo Bacucang CV-2025.pdf"
+      src="Jan%20Angelo%20Bacucang%20CV-2025.pdf"
       width="100%"
       height="600"
       class="cv-iframe"
@@ -49,7 +75,7 @@
     ></iframe>
     <div class="cta-buttons">
       <a
-        href="CV folder/Jan Angelo Bacucang CV-2025.pdf"
+        href="Jan%20Angelo%20Bacucang%20CV-2025.pdf"
         download="Jan_Angelo_Bacucang_CV.pdf"
         class="btn btn-primary"
         title="Download Jan Angelo Bacucang CV"

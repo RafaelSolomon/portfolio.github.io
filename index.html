@@ -12,33 +12,7 @@
   <meta name="geo.position" content="14.5547;121.0244" />
   <meta name="ICBM" content="14.5547, 121.0244" />
   <link rel="canonical" href="https://example.com/" />
-  <style>
-    :root {
-      --primary-gradient: linear-gradient(135deg, #4f46e5, #06b6d4);
-      --card-bg: rgba(255,255,255,0.9);
-      --card-radius: 12px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; margin: 0; background: #f3f4f6; color: #333; }
-    header { background: var(--primary-gradient); color: white; padding: 40px 20px; text-align: center; }
-    header img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid white; box-shadow: var(--shadow); object-fit: cover; }
-    nav { position: sticky; top: 0; background: #1f2937; padding: 10px; display: flex; justify-content: center; gap: 20px; z-index: 1000; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    section { max-width: 1000px; margin: 20px auto; padding: 20px; background: var(--card-bg); border-radius: var(--card-radius); box-shadow: var(--shadow); }
-    h2 { margin-top: 0; }
-    .cta-buttons { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; }
-    .btn-primary { background: var(--primary-gradient); }
-    .btn-secondary { background: #374151; }
-    .cv-iframe { border: none; box-shadow: var(--shadow); border-radius: var(--card-radius); }
-    footer { text-align: center; padding: 20px; color: #6b7280; font-size: 0.9em; }
-    @media(max-width: 600px) {
-      header { padding: 20px 10px; }
-      .cv-iframe { height: 400px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
@@ -46,7 +20,7 @@
     <h1>Jan Angelo Bacucang, PhRN</h1>
     <p>AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
     <div class="cta-buttons">
-      <a class="btn btn-primary" href="Jan%20Angelo%20Bacucang%20CV-2025.pdf" download>Download CV</a>
+      <a class="btn btn-primary" href="CV folder/Jan Angelo Bacucang CV-2025.pdf" download>Download CV</a>
       <a class="btn btn-secondary" href="https://example.com/my-intro-video.mp4" target="_blank">Watch My Introduction</a>
     </div>
   </header>
@@ -67,7 +41,7 @@
   <section id="cv" class="cv-center">
     <h2>My CV</h2>
     <iframe
-      src="Jan%20Angelo%20Bacucang%20CV-2025.pdf"
+      src="CV folder/Jan Angelo Bacucang CV-2025.pdf"
       width="100%"
       height="600"
       class="cv-iframe"
@@ -75,7 +49,7 @@
     ></iframe>
     <div class="cta-buttons">
       <a
-        href="Jan%20Angelo%20Bacucang%20CV-2025.pdf"
+        href="CV folder/Jan Angelo Bacucang CV-2025.pdf"
         download="Jan_Angelo_Bacucang_CV.pdf"
         class="btn btn-primary"
         title="Download Jan Angelo Bacucang CV"
@@ -123,255 +97,3 @@
   </script>
 </body>
 </html>
-<script>
-    document.getElementById('profile-photo').src = 'https://via.placeholder.com/150';
-  </script>
-<script>
-    document.querySelector('meta[name="description"]').content = 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.';
-    document.querySelector('meta[name="keywords"]').content = 'AI trainer, AI consultant, prompt engineering, workflow automation, AI governance, fintech, Makati, Philippines, financial services, medical records reviewer, NY WCB claims adjudicator';
-    document.querySelector('meta[name="author"]').content = 'Jan Angelo Bacucang, PhRN';
-    document.querySelector('link[rel="canonical"]').href = 'https://example.com/';
-    document.querySelector('meta[name="geo.region"]').content = 'PH-NCR';
-    document.querySelector('meta[name="geo.placename"]').content = 'Makati City';
-    document.querySelector('meta[name="geo.position"]').content = '14.5547;121.0244';
-    document.querySelector('meta[name="ICBM"]').content = '14.5547, 121.0244';
-</script> 
-<script>
-    document.querySelector('title').textContent = 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator';
-    document.querySelector('meta[name="description"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.');
-    document.querySelector('meta[name="keywords"]').setAttribute('content', 'AI trainer, AI consultant, prompt engineering, workflow automation, AI governance, fintech, Makati, Philippines, financial services, medical records reviewer, NY WCB claims adjudicator');
-    document.querySelector('meta[name="author"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN');
-    document.querySelector('link[rel="canonical"]').setAttribute('href', 'https://example.com/');
-    document.querySelector('meta[name="geo.region"]').setAttribute('content', 'PH-NCR');
-    document.querySelector('meta[name="geo.placename"]').setAttribute('content', 'Makati City');
-    document.querySelector('meta[name="geo.position"]').setAttribute('content', '14.5547;121.0244');
-    document.querySelector('meta[name="ICBM"]').setAttribute('content', '14.5547, 121.0244');
-    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1');
-    document.querySelector('meta[charset]').setAttribute('charset', 'utf-8');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#4f46e5');
-    document.querySelector('meta[name="color-scheme"]').setAttribute('content', 'light dark');
-    document.querySelector('meta[name="mobile-web-app-capable"]').setAttribute('content', 'yes');
-    document.querySelector('meta[name="apple-mobile-web-app-capable"]').setAttribute('content', 'yes');
-    document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute('content', 'default');
-    document.querySelector('meta[name="msapplication-TileColor"]').setAttribute('content', '#4f46e5');
-    document.querySelector('meta[name="msapplication-TileImage"]').setAttribute('content', 'https://via.placeholder.com/150');
-    document.querySelector('meta[name="application-name"]').setAttribute('content', 'Jan Angelo Bacucang');
-    document.querySelector('meta[name="apple-mobile-web-app-title"]').setAttribute('content', 'Jan Angelo Bacucang');
-    document.querySelector('meta[name="twitter:card"]').setAttribute('content', 'summary');
-    document.querySelector('meta[name="twitter:title"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator');
-    document.querySelector('meta[name="twitter:description"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.');
-    document.querySelector('meta[name="twitter:image"]').setAttribute('content', 'https://via.placeholder.com/150');
-    document.querySelector('meta[name="twitter:site"]').setAttribute('content', '@jbacucang');
-    document.querySelector('meta[name="twitter:creator"]').setAttribute('content', '@jbacucang');
-    document.querySelector('meta[property="og:title"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator');
-    document.querySelector('meta[property="og:description"]').setAttribute('content', 'Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.');
-    document.querySelector('meta[property="og:image"]').setAttribute('content', 'https:// via.placeholder.com/150');
-    document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://example.com/');
-    document.querySelector('meta[property="og:type"]').setAttribute('content', 'website');
-    document.querySelector('meta[property="og:locale"]').setAttribute('content', 'en_US');
-    document.querySelector('meta[property="og:site_name"]').setAttribute('content', 'Jan Angelo Bacucang');
-    document.querySelector('meta[name="robots"]').setAttribute('content', 'index, follow');
-    document.querySelector('meta[name="google-site-verification"]').setAttribute('content', 'your-verification-code');
-    document.querySelector('link[rel="icon"]').setAttribute('href', 'https://via.placeholder.com/32');
-    document.querySelector('link[rel="apple-touch-icon"]').setAttribute('href', 'https://via.placeholder.com/180');
-    document.querySelector('link[rel="manifest"]').setAttribute('href', 'manifest.json');
-    document.querySelector('link[rel="stylesheet"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preconnect"]').setAttribute('href', 'https  ://fonts.googleapis.com');
-    document.querySelector('link[rel="preconnect"]').setAttribute('href', 'https://fonts.gstatic.com', { crossorigin: 'anonymous' });
-    document.querySelector('link[rel="stylesheet"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="stylesheet"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="alternate"]').setAttribute('href', 'https://example.com/rss.xml');
-    document.querySelector('link[rel="alternate"]').setAttribute('type', 'application/rss+xml');
-    document.querySelector('link[rel="alternate"]').setAttribute('title', 'Jan Angelo Bacucang RSS Feed');
-    document.querySelector('link[rel="canonical"]').setAttribute('href', 'https://example.com/');
-    document.querySelector('link[rel="shortcut icon"]').setAttribute('href', 'https ://via.placeholder.com/32');
-    document.querySelector('link[rel="apple-touch-icon"]').setAttribute('href', 'https://via.placeholder.com/180');
-    document.querySelector('link[rel="manifest"]').setAttribute('href', 'manifest.json');
-    document.querySelector('link[rel="dns-prefetch"]').setAttribute('href', 'https://fonts.googleapis.com');
-    document.querySelector('link[rel="dns-prefetch"]').setAttribute('href', 'https://fonts.gstatic.com');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', '   anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https ://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https ://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', ' anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https ://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'styles.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style');
-    document.querySelector('link[rel="preload"]').setAttribute('crossorigin', 'anonymous');
-    document.querySelector('link[rel="preload"]').setAttribute('href', 'https ://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    document.querySelector('link[rel="preload"]').setAttribute('as', 'style                                                                                                                                                                                                                       ');
-    // Removed incomplete/unnecessary line to fix unterminated string literal error.

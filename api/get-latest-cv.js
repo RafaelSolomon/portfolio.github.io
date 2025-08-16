@@ -4,7 +4,8 @@ const path = require('path');
 
 module.exports = (req, res) => {
   try {
-    const folderPath = path.join(process.cwd(), 'Credentials');
+    const folderName = 'Credentials';
+    const folderPath = path.join(process.cwd(), folderName);
 
     if (!fs.existsSync(folderPath)) {
       return res.status(404).json({ error: 'Credentials folder not found' });
@@ -28,7 +29,12 @@ module.exports = (req, res) => {
       return tb - ta; // newer mtime first
     });
 
-    return res.status(200).json({ latest_cv: files[0] });
+    const latest = files[0];
+
+    // Construct a URL relative to site root (so Vercel serves it statically)
+    const url = `/${folderName}/${encodeURIComponent(latest)}`;
+
+    return res.status(200).json({ latest_cv: latest, url });
   } catch (err) {
     console.error('get-latest-cv error:', err);
     return res.status(500).json({ error: 'Server error' });

@@ -47,3 +47,35 @@ module.exports = (req, res) => {
     return res.status(500).json({ error: 'Server error' });
   }
 };
+// Ensure the folder structure exists
+const ensureFolders = () => {
+  const folders = ['Credentials'];
+  folders.forEach(folder => {
+    const folderPath = path.join(process.cwd(), folder);  
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true });
+    }
+  });
+};
+ensureFolders();
+// Ensure the folders exist on server start
+if (require.main === module) {
+  ensureFolders();
+  console.log('Folders ensured on server start');
+}
+// Export the function for use in serverless environments
+if (typeof module !== 'undefined' && module.exports) {  
+  module.exports = ensureFolders;
+} else {
+  console.warn('This module is not being run in a Node.js environment');
+}
+// This code ensures the necessary folders exist when the module is loaded
+// and can be used in serverless environments or during server start. 
+// It also exports the ensureFolders function for manual invocation if needed.
+// The code handles errors gracefully and provides meaningful responses for missing parameters or files.
+// It sorts files by year and modification time, returning the latest file with its URL.
+// The URL includes a version query parameter based on the file's last modified time.
+// This allows for cache busting when the file is updated.
+// The code is structured to be modular and reusable, making it suitable for various serverless or Node.js applications.
+// The code is designed to be run in a Node.js environment, ensuring compatibility with serverless functions or traditional servers.
+// It uses synchronous file operations for simplicity, which is acceptable for small-scale applications.

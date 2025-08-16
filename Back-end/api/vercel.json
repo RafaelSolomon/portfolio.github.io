@@ -1,18 +1,46 @@
 {
+  "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/get-latest-cv.js": {
+    "api/get-latest.js": {
       "runtime": "nodejs18.x",
       "includeFiles": "Credentials/**"
     }
   },
   "headers": [
     {
-      "source": "/Credentials/(.*)",
+      "source": "/Credentials/*.pdf",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
+    },
+    {
+      "source": "/Credentials/*.{png,jpg,jpeg,webp}",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/Credentials/*.{mp4,mov,webm}",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/get-latest",
+      "destination": "/api/get-latest.js"
     }
   ]
 }

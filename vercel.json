@@ -1,15 +1,18 @@
 {
-  "version": 3,
-  "functions": {
-    "Back-end/api/get-latest.js": {
-      "runtime": "nodejs18.x",
-      "includeFiles": "../../Credentials/**"
-    }
-  },
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/get-latest",
-      "destination": "/Back-end/api/get-latest.js"
+      "src": "Back-end/api/get-latest.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "../../Credentials/**"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/get-latest",
+      "dest": "Back-end/api/get-latest.js"
     }
   ]
 }

@@ -1,41 +1,23 @@
-const fs = require("fs");
-const path = require("path");
+// -------------------------------
+// Increment version/timestamp in cv.json
+// -------------------------------
+const jsonFilePath = path.join(CREDENTIALS_DIR, "cv.json");
 
-// Paths
-const CREDENTIALS_DIR = path.join(process.cwd(), "Credentials");
-
-// Desired filenames
-const FILE_MAP = {
-  "headshot": "portfolio-headshot.png",
-  "cv": "cv.pdf",
-  "json": "cv.json"
-};
-
-// Function to rename files if needed
-function syncFile(type, desiredName) {
-  const files = fs.readdirSync(CREDENTIALS_DIR);
-
-  // Find first matching file by type keyword
-  const match = files.find(f => f.toLowerCase().includes(type.toLowerCase()));
-  if (!match) {
-    console.warn(`No ${type} file found to sync.`);
-    return;
-  }
-
-  const currentPath = path.join(CREDENTIALS_DIR, match);
-  const desiredPath = path.join(CREDENTIALS_DIR, desiredName);
-
-  if (currentPath !== desiredPath) {
-    fs.renameSync(currentPath, desiredPath);
-    console.log(`${type} file renamed from "${match}" to "${desiredName}"`);
-  } else {
-    console.log(`${type} file is already correct: "${desiredName}"`);
+let jsonData = {};
+if (fs.existsSync(jsonFilePath)) {
+  try {
+    jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf8"));
+  } catch (err) {
+    console.warn("cv.json is not valid JSON, resetting data.");
+    jsonData = {};
   }
 }
 
-// Run sync for all files
-for (const [type, name] of Object.entries(FILE_MAP)) {
-  syncFile(type, name);
-}
+// Update version/timestamp
+const now = new Date();
+jsonData.version = (jsonData.version || 0) + 1;
+jsonData.lastUpdated = now.toISOString();
 
-console.log("Credentials sync complete.");
+// Write back to cv.json
+fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), "utf8");
+console.log(`cv.json updated: version ${jsonData.version}, lastUpdated ${jsonData.lastUpdated}`);

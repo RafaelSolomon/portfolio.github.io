@@ -1,6 +1,7 @@
-// -------------------------------
-// Increment version/timestamp in cv.json
-// -------------------------------
+const fs = require("fs");
+const path = require("path");
+
+const CREDENTIALS_DIR = path.join(__dirname, "Credentials");
 const jsonFilePath = path.join(CREDENTIALS_DIR, "cv.json");
 
 let jsonData = {};
@@ -13,11 +14,9 @@ if (fs.existsSync(jsonFilePath)) {
   }
 }
 
-// Update version/timestamp
 const now = new Date();
 jsonData.version = (jsonData.version || 0) + 1;
 jsonData.lastUpdated = now.toISOString();
 
-// Write back to cv.json
 fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), "utf8");
 console.log(`cv.json updated: version ${jsonData.version}, lastUpdated ${jsonData.lastUpdated}`);

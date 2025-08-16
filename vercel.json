@@ -5,7 +5,7 @@
       "src": "Back-end/api/get-latest.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "../../Credentials/**"
+        "includeFiles": "Credentials/**"
       }
     }
   ],

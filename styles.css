@@ -14,6 +14,7 @@ body {
   color: #333;
   line-height: 1.6;
 }
+
 h1 { margin: 0; font-size: 1.8rem; }
 p.subtitle { margin: 8px 0 16px; font-size: 1rem; }
 h2 { margin-top: 0; }
@@ -26,6 +27,7 @@ header {
   text-align: center;
   padding: 40px 20px;
 }
+
 header img {
   width: 120px;
   height: 120px;
@@ -45,8 +47,9 @@ header img {
   font-weight: 600;
   font-size: 0.95rem;
   text-align: center;
-  transition: background 0.3s ease, opacity 1s ease-in-out;
+  transition: background 0.3s ease;
 }
+
 .btn-primary { background: var(--primary-gradient); color: white; }
 .btn-secondary { background: var(--dark-bg); color: white; }
 
@@ -59,11 +62,13 @@ nav {
   gap: 15px;
   padding: 12px;
 }
+
 nav a {
   color: white;
   text-decoration: none;
   font-weight: 500;
 }
+
 nav a:hover { text-decoration: underline; }
 
 /* Sections */
@@ -84,13 +89,16 @@ footer {
   color: #666;
 }
 
-/* Fade-in */
+/* Fade-in animation */
 .fade-in {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
+
 .fade-in.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive */
@@ -100,13 +108,4 @@ footer {
   p.subtitle { font-size: 0.9rem; }
   nav { flex-direction: column; align-items: center; }
   section { margin: 15px; padding: 15px; }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  body { background: var(--dark-bg); color: #f9fafb; }
-  header { background: var(--primary-gradient); }
-  section { background: #2d3748; color: #f9fafb; }
-  nav { background: #1a202c; }
-  footer { color: #a0aec0; }
 }

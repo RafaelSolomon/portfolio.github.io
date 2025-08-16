@@ -14,6 +14,7 @@ body {
   background: var(--light-bg);
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 h1 { margin: 0; font-size: 2rem; }
@@ -37,6 +38,9 @@ header img {
   box-shadow: var(--shadow);
   margin-bottom: 15px;
   object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Buttons */
@@ -49,7 +53,12 @@ header img {
   font-weight: 600;
   font-size: 0.95rem;
   text-align: center;
-  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+  opacity: 0;
+}
+
+.btn.show {
+  opacity: 1;
 }
 
 .btn:hover {
@@ -95,34 +104,4 @@ section.show {
   transform: translateY(0);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 25px;
-  font-size: 0.9rem;
-  color: #666;
-  background: var(--dark-bg);
-  color: white;
-}
-
-/* Utility classes */
-.hidden { display: none; }
-
-.fade-in {
-  opacity: 0;
-  transition: opacity var(--transition-speed) ease-in-out;
-}
-
-.fade-in.show {
-  opacity: 1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  header { padding: 35px 15px; }
-  h1 { font-size: 1.6rem; }
-  p.subtitle { font-size: 0.9rem; }
-  nav { flex-direction: column; align-items: center; }
-  section { margin: 15px; padding: 15px; }
-  header img { width: 120px; height: 120px; }
-}
+/* Foot*

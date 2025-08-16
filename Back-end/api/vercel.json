@@ -1,46 +1,21 @@
 {
-  "version": 2,
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "version": 3,
   "functions": {
-    "api/get-latest.js": {
+    "Back-end/api/get-latest.js": {
       "runtime": "nodejs18.x",
-      "includeFiles": "Credentials/**"
+      "includeFiles": "../../Credentials/**"
     }
   },
-  "headers": [
-    {
-      "source": "/Credentials/*.pdf",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/Credentials/*.{png,jpg,jpeg,webp}",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/Credentials/*.{mp4,mov,webm}",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
-      ]
-    }
-  ],
   "rewrites": [
     {
       "source": "/api/get-latest",
-      "destination": "/api/get-latest.js"
+      "destination": "/Back-end/api/get-latest.js"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/Credentials/(.*)",
+      "dest": "/Credentials/$1"
     }
   ]
 }

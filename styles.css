@@ -4,6 +4,7 @@
   --light-bg: #f9fafb;
   --radius: 12px;
   --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --transition-speed: 0.6s;
 }
 
 /* Body & Typography */
@@ -15,26 +16,27 @@ body {
   line-height: 1.6;
 }
 
-h1 { margin: 0; font-size: 1.8rem; }
+h1 { margin: 0; font-size: 2rem; }
 p.subtitle { margin: 8px 0 16px; font-size: 1rem; }
-h2 { margin-top: 0; }
-ul { padding-left: 20px; }
+h2 { margin-top: 0; font-size: 1.5rem; }
+ul { padding-left: 20px; list-style-type: disc; }
 
 /* Header */
 header {
   background: var(--primary-gradient);
   color: white;
   text-align: center;
-  padding: 40px 20px;
+  padding: 50px 20px;
 }
 
 header img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   border: 3px solid white;
   box-shadow: var(--shadow);
   margin-bottom: 15px;
+  object-fit: cover;
 }
 
 /* Buttons */
@@ -47,7 +49,11 @@ header img {
   font-weight: 600;
   font-size: 0.95rem;
   text-align: center;
-  transition: background 0.3s ease;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary { background: var(--primary-gradient); color: white; }
@@ -74,38 +80,49 @@ nav a:hover { text-decoration: underline; }
 /* Sections */
 section {
   max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 25px auto;
+  padding: 25px;
   background: white;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   font-size: 0.9rem;
   color: #666;
+  background: var(--dark-bg);
+  color: white;
 }
 
-/* Fade-in animation */
+/* Utility classes */
+.hidden { display: none; }
+
 .fade-in {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transition: opacity var(--transition-speed) ease-in-out;
 }
 
 .fade-in.show {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  header { padding: 30px 15px; }
-  h1 { font-size: 1.4rem; }
+  header { padding: 35px 15px; }
+  h1 { font-size: 1.6rem; }
   p.subtitle { font-size: 0.9rem; }
   nav { flex-direction: column; align-items: center; }
   section { margin: 15px; padding: 15px; }
+  header img { width: 120px; height: 120px; }
 }

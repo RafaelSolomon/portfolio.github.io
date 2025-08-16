@@ -1,51 +1,60 @@
-document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  const profileImg = document.getElementById("profile-photo");
+  const cvLink = document.getElementById("cv-download-link");
+  const introVideoLink = document.getElementById("intro-video-link");
+  const sections = document.querySelectorAll("section");
+  const yearSpan = document.getElementById("year");
 
-async function fadeInElement(el) {
-  if (!el) return;
-  el.classList.add('show');
-}
+  // Set current year
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-async function updateAssets() {
-  try {
-    // Headshot
-    const headshotRes = await fetch('/api/get-latest?type=headshot');
-    const profilePhoto = document.getElementById('profile-photo');
-    if (headshotRes.ok) {
-      const { url } = await headshotRes.json();
-      profilePhoto.onload = () => fadeInElement(profilePhoto);
-      profilePhoto.src = url;
-    } else {
-      fadeInElement(profilePhoto);
+  // Helper: fetch latest file
+  async function fetchLatest(type) {
+    try {
+      const res = await fetch(`/api/get-latest?type=${type}`);
+      if (!res.ok) throw new Error(`No latest ${type} found`);
+      const data = await res.json();
+      return data.url;
+    } catch (err) {
+      console.warn(err.message);
+      return null;
     }
-
-    // CV
-    const cvRes = await fetch('/api/get-latest?type=cv');
-    const cvLink = document.getElementById('cv-download-link');
-    if (cvRes.ok) {
-      const { url, latest_file } = await cvRes.json();
-      cvLink.href = url;
-      cvLink.setAttribute('download', latest_file);
-      fadeInElement(cvLink);
-    } else {
-      fadeInElement(cvLink);
-    }
-
-    // Video
-    const vidRes = await fetch('/api/get-latest?type=video');
-    const introLink = document.getElementById('intro-video-link');
-    if (vidRes.ok) {
-      const { url } = await vidRes.json();
-      introLink.href = url;
-      fadeInElement(introLink);
-    } else {
-      fadeInElement(introLink);
-    }
-  } catch (err) {
-    console.warn('Fallback assets applied', err);
-    fadeInElement(document.getElementById('profile-photo'));
-    fadeInElement(document.getElementById('cv-download-link'));
-    fadeInElement(document.getElementById('intro-video-link'));
   }
-}
 
-updateAssets();
+  // Load Headshot
+  fetchLatest("headshot").then(url => {
+    if (url && profileImg) {
+      profileImg.src = url;
+      profileImg.onload = () => profileImg.classList.add("show");
+    }
+  });
+
+  // Load CV
+  fetchLatest("cv").then(url => {
+    if (url && cvLink) {
+      cvLink.href = url;
+      cvLink.target = "_blank";
+      cvLink.classList.add("show");
+    }
+  });
+
+  // Load Intro Video
+  fetchLatest("video").then(url => {
+    if (url && introVideoLink) {
+      introVideoLink.href = url;
+      introVideoLink.classList.add("show");
+    }
+  });
+
+  // Fade-in sections on scroll
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+});

@@ -1,44 +1,28 @@
 const fs = require("fs");
 const path = require("path");
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   try {
-    // Root path to Credentials folder relative to this file
-    const credentialsPath = path.join(process.cwd(), "Credentials");
+    const credentialsDir = path.join(__dirname, "../../Credentials");
+    const files = fs.readdirSync(credentialsDir);
 
-    // Headshot
-    const headshotFile = fs.existsSync(path.join(credentialsPath, "portfolio-headshot.png"))
-      ? "/Credentials/portfolio-headshot.png"
-      : null;
+    const headshotFile = files.find(f =>
+      /\.(png|jpg|jpeg)$/i.test(f) && f.toLowerCase().includes("headshot")
+    );
 
-    // CV
-    const cvFile = fs.existsSync(path.join(credentialsPath, "cv.pdf"))
-      ? "/Credentials/cv.pdf"
-      : null;
+    const cvFile = files.find(f =>
+      /\.pdf$/i.test(f) && f.toLowerCase().includes("cv")
+    );
 
-    // JSON (optional)
-    const jsonFilePath = path.join(credentialsPath, "cv.json");
-    let cvJson = null;
-    if (fs.existsSync(jsonFilePath)) {
-      const jsonData = fs.readFileSync(jsonFilePath, "utf8");
-      try {
-        cvJson = JSON.parse(jsonData);
-      } catch (err) {
-        console.warn("cv.json is not valid JSON:", err);
-      }
-    }
+    const headshotPath = headshotFile ? `/Credentials/${headshotFile}` : null;
+    const cvPath = cvFile ? `/Credentials/${cvFile}` : null;
 
-    // Response object
-    const data = {
-      headshot: headshotFile,
-      cv: cvFile,
-      json: cvJson
-    };
-
-    res.status(200).json(data);
-
-  } catch (error) {
-    console.error("Error in get-latest.js:", error);
-    res.status(500).json({ error: "Server error fetching latest files" });
+    res.status(200).json({
+      headshot: headshotPath,
+      cv: cvPath
+    });
+  } catch (err) {
+    console.error("Error in get-latest API:", err);
+    res.status(500).json({ error: "Failed to fetch latest credentials" });
   }
-}
+};

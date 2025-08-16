@@ -7,42 +7,97 @@
   <meta name="description" content="Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows." />
   <meta name="keywords" content="AI trainer, AI consultant, prompt engineering, workflow automation, AI governance, fintech, Makati, Philippines, financial services, medical records reviewer, NY WCB claims adjudicator" />
   <meta name="author" content="Jan Angelo Bacucang, PhRN" />
-  <meta name="geo.region" content="PH-NCR" />
-  <meta name="geo.placename" content="Makati City" />
-  <meta name="geo.position" content="14.5547;121.0244" />
-  <meta name="ICBM" content="14.5547, 121.0244" />
-  <link rel="canonical" href="https://example.com/" />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #4f46e5, #06b6d4);
+      --dark-bg: #1f2937;
+      --light-bg: #f9fafb;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary-gradient);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: var(--shadow);
+      margin-bottom: 15px;
+    }
+    h1 { margin: 0; font-size: 1.8rem; }
+    p.subtitle { margin: 8px 0 16px; font-size: 1rem; }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 5px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .btn-primary { background: var(--primary-gradient); color: white; }
+    .btn-secondary { background: var(--dark-bg); color: white; }
+    nav {
+      background: var(--dark-bg);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 12px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    h2 { margin-top: 0; }
+    ul { padding-left: 20px; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 30px 15px; }
+      h1 { font-size: 1.4rem; }
+      p.subtitle { font-size: 0.9rem; }
+      nav { flex-direction: column; align-items: center; }
+      section { margin: 15px; padding: 15px; }
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="https://via.placeholder.com/150" alt="Jan Angelo Bacucang headshot" id="profile-photo">
     <h1>Jan Angelo Bacucang, PhRN</h1>
-    <p>AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
-    <div class="cta-buttons">
-      <!-- CV button (static fallback + API override) -->
-      <a 
-        id="cv-download-link" 
-        class="btn btn-primary" 
-        href="Credentials/Jan-Angelo-Bacucang-CV-2025.pdf"
-        download="Jan-Angelo-Bacucang-CV-2025.pdf"
-        title="Download latest CV"
-      >
-        📄 Download CV
-      </a>
-
-      <!-- Intro video button (static fallback + API override) -->
-      <a 
-        id="intro-video-link" 
-        class="btn btn-secondary" 
-        href="https://example.com/my-intro-video.mp4"
-        target="_blank" 
-        rel="noopener"
-        title="Watch my introduction video"
-      >
-        🎥 Watch My Introduction
-      </a>
-    </div>
+    <p class="subtitle">AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
+    <a id="intro-video-link" class="btn btn-secondary" href="https://example.com/my-intro-video.mp4" target="_blank">🎥 Watch Introduction</a>
   </header>
 
   <nav>
@@ -56,22 +111,6 @@
   <section id="about">
     <h2>About Me</h2>
     <p>I translate AI into measurable business value for regulated financial and healthcare teams, focusing on ChatGPT, prompt engineering, and compliance-aware AI workflows. My expertise includes medical records review and NY WCB claims adjudication with a track record of accuracy and compliance.</p>
-  </section>
-
-  <!-- CV Section -->
-  <section id="cv" class="card">
-    <h2>My CV</h2>
-    <div class="cta-buttons">
-      <a 
-        id="cv-download-link" 
-        class="btn btn-primary" 
-        href="Credentials/Jan-Angelo-Bacucang-CV-2025.pdf"
-        download="Jan-Angelo-Bacucang-CV-2025.pdf"
-        title="Download latest CV"
-      >
-        📄 Download CV
-      </a>
-    </div>
   </section>
 
   <section id="services">
@@ -96,6 +135,11 @@
     </ul>
   </section>
 
+  <section id="cv">
+    <h2>My CV</h2>
+    <a id="cv-download-link" class="btn btn-primary" href="Credentials/Jan-Angelo-Bacucang-CV-2025.pdf" download>📄 Download CV</a>
+  </section>
+
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:jabacucang@gmail.com">jabacucang@gmail.com</a></p>
@@ -108,47 +152,36 @@
   </footer>
 
   <script>
-    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Update CV link dynamically
-    async function updateCVLink() {
+    // Auto-update assets if API is available
+    async function updateAssets() {
       try {
-        const res = await fetch('/api/get-latest-cv');
-        if (!res.ok) throw new Error("API response not ok");
-        const data = await res.json();
-
-        if (data.url) {
-          const link = document.getElementById("cv-download-link");
-          link.href = data.url;
-          link.setAttribute("download", data.latest_cv);
+        const cvRes = await fetch("/api/get-latest?type=cv");
+        if (cvRes.ok) {
+          const { url, latest_file } = await cvRes.json();
+          if (url) {
+            const cvLink = document.getElementById("cv-download-link");
+            cvLink.href = url;
+            cvLink.setAttribute("download", latest_file);
+            cvLink.textContent = "📄 Download " + latest_file;
+          }
+        }
+        const hsRes = await fetch("/api/get-latest?type=headshot");
+        if (hsRes.ok) {
+          const { url } = await hsRes.json();
+          if (url) document.getElementById("profile-photo").src = url;
+        }
+        const vidRes = await fetch("/api/get-latest?type=video");
+        if (vidRes.ok) {
+          const { url } = await vidRes.json();
+          if (url) document.getElementById("intro-video-link").href = url;
         }
       } catch (err) {
-        console.error("Error fetching CV link:", err);
-        // Fallback remains
+        console.warn("Using fallback assets");
       }
     }
-
-    // Update Intro Video link dynamically
-    async function updateIntroVideoLink() {
-      try {
-        const res = await fetch('/api/get-latest-video'); // future API
-        if (!res.ok) throw new Error("API response not ok");
-        const data = await res.json();
-
-        if (data.url) {
-          const link = document.getElementById("intro-video-link");
-          link.href = data.url;
-        }
-      } catch (err) {
-        console.error("Error fetching intro video link:", err);
-        // Fallback remains
-      }
-    }
-
-    // Run both updaters
-    updateCVLink();
-    updateIntroVideoLink();
+    updateAssets();
   </script>
 </body>
 </html>

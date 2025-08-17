@@ -3,31 +3,16 @@
   "builds": [
     {
       "src": "api/get-latest.js",
-      "use": "@vercel/node@20",
+      "use": "@vercel/node@3",
       "config": {
         "includeFiles": "Credentials/**"
       }
     },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "styles.min.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "scripts.min.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "Credentials/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "favicon.ico",
-      "use": "@vercel/static"
-    }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "styles.min.css", "use": "@vercel/static" },
+    { "src": "scripts.min.js", "use": "@vercel/static" },
+    { "src": "Credentials/**", "use": "@vercel/static" },
+    { "src": "favicon.ico", "use": "@vercel/static" }
   ],
   "rewrites": [
     { "source": "/api/get-latest", "destination": "/api/get-latest.js" },

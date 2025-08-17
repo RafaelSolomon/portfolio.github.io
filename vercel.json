@@ -1,11 +1,46 @@
 {
-  "functions": {
-    "api/get-latest.js": {
-      "runtime": "nodejs18.x",
-      "includeFiles": "Credentials/**"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/get-latest.js",
+      "use": "@vercel/node@18",
+      "config": {
+        "includeFiles": "Credentials/**"
+      }
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "styles.min.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "scripts.min.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Credentials/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "favicon.ico",
+      "use": "@vercel/static"
     }
-  },
+  ],
   "rewrites": [
     { "source": "/api/get-latest", "destination": "/api/get-latest.js" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).(js|css|mp4|pdf|png|webp|ico)$",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

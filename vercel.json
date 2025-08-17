@@ -1,18 +1,18 @@
 {
   "version": 2,
   "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "styles.css", "use": "@vercel/static" },
+    { "src": "scripts.js", "use": "@vercel/static" },
+    { "src": "Credentials/**", "use": "@vercel/static" },
     {
       "src": "Back-end/api/get-latest.js",
       "use": "@vercel/node",
-      "config": {
-        "includeFiles": "Credentials/**"
-      }
+      "config": { "includeFiles": "Credentials/**" }
     }
   ],
   "routes": [
-    {
-      "src": "/api/get-latest",
-      "dest": "Back-end/api/get-latest.js"
-    }
+    { "src": "/api/get-latest", "dest": "Back-end/api/get-latest.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

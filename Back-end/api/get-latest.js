@@ -1,34 +1,48 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   try {
-    const credentialsDir = path.join(process.cwd(), "Credentials"); // root folder
-    const files = fs.readdirSync(credentialsDir);
+    const { type } = req.query;
 
-    const headshotFile = files.find(f =>
-      /\.(png|jpg|jpeg)$/i.test(f) && f.toLowerCase().includes("headshot")
-    );
+    // Map type to folder name
+    const folderMap = {
+      headshot: "headshots",
+      cv: "cv",
+      video: "videos"
+    };
 
-    const cvFile = files.find(f =>
-      /\.pdf$/i.test(f) && f.toLowerCase().includes("cv")
-    );
+    if (!folderMap[type]) {
+      return res.status(400).json({ error: "Invalid type" });
+    }
 
-    const videoFile = files.find(f =>
-      /\.(mp4|webm|ogg)$/i.test(f) && f.toLowerCase().includes("intro")
-    );
+    // Build folder path
+    const folderPath = path.join(process.cwd(), "Credentials", folderMap[type]);
 
-    const headshotPath = headshotFile ? `/Credentials/${headshotFile}` : null;
-    const cvPath = cvFile ? `/Credentials/${cvFile}` : null;
-    const videoPath = videoFile ? `/Credentials/${videoFile}` : null;
+    if (!fs.existsSync(folderPath)) {
+      return res.status(404).json({ error: `No folder found for ${type}` });
+    }
 
-    res.status(200).json({
-      headshot: headshotPath,
-      cv: cvPath,
-      video: videoPath
-    });
+    // Read files and sort by modified date (latest first)
+    const files = fs
+      .readdirSync(folderPath)
+      .map(file => ({
+        name: file,
+        time: fs.statSync(path.join(folderPath, file)).mtime.getTime()
+      }))
+      .sort((a, b) => b.time - a.time);
+
+    if (files.length === 0) {
+      return res.status(404).json({ error: `No files found for ${type}` });
+    }
+
+    // Build a public URL to serve the file
+    const latestFile = files[0].name;
+    const fileUrl = `${req.headers.origin}/Credentials/${folderMap[type]}/${latestFile}`;
+
+    return res.status(200).json({ url: fileUrl });
   } catch (err) {
-    console.error("Error in get-latest API:", err);
-    res.status(500).json({ error: "Failed to fetch latest credentials" });
+    console.error(err);
+    return res.status(500).json({ error: "Server error" });
   }
-};
+}

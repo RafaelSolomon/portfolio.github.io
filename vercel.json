@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "Back-end/api/get-latest.js": {
+    "api/get-latest.js": {
       "runtime": "nodejs18.x",
       "includeFiles": "Credentials/**"
     }
@@ -12,35 +12,26 @@
     {
       "source": "/Credentials/*.pdf",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
     },
     {
       "source": "/Credentials/*.{png,jpg,jpeg,webp}",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
     },
     {
       "source": "/Credentials/*.{mp4,mov,webm}",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
     }
   ],
   "rewrites": [
     {
       "source": "/api/get-latest",
-      "destination": "Back-end/api/get-latest.js"
+      "destination": "/api/get-latest.js"
     }
   ],
   "routes": [

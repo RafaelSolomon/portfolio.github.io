@@ -1,67 +1,59 @@
 // scripts.js
-
-document.addEventListener("DOMContentLoaded", async () => {
-  // Fade-in helper
-  const fadeIn = (el) => {
-    if (!el) return;
-    el.classList.add("visible");
-  };
-
-  // Update year in footer
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Fetch latest asset from API
-  const fetchLatest = async (type) => {
-    try {
-      const res = await fetch(`/api/get-latest?type=${type}`);
-      if (!res.ok) throw new Error(`${type} not found`);
-      return await res.json();
-    } catch (err) {
-      console.warn(`Failed to load ${type}:`, err.message);
-      return null;
-    }
-  };
-
-  // Update headshot
-  const headshotEl = document.getElementById("headshot");
-  const headshotData = await fetchLatest("headshot");
-  if (headshotData && headshotEl) {
-    headshotEl.src = headshotData.url;
-    fadeIn(headshotEl);
-  } else {
-    fadeIn(headshotEl); // fallback already in HTML
-  }
-
-  // Update CV links
-  const cvLinks = [
-    document.getElementById("cv-download-link"),
-    document.getElementById("cv-download-link-secondary"),
+document.addEventListener('DOMContentLoaded', async () => {
+  const assets = [
+    { type: 'headshot', selector: '#headshot', fallback: 'Credentials/fallback-headshot.png' },
+    { type: 'cv', selector: '#cv-download-link', fallback: 'Credentials/fallback-cv.pdf' },
+    { type: 'video', selector: '#introVideo source', fallback: 'Credentials/fallback-video.mp4' }
   ];
-  const cvData = await fetchLatest("cv");
-  if (cvData) {
-    cvLinks.forEach((link) => {
-      if (link) {
-        link.href = cvData.url;
-        fadeIn(link);
+
+  for (const asset of assets) {
+    try {
+      const res = await fetch(`/api/get-latest?type=${asset.type}`);
+      if (!res.ok) throw new Error('API fetch failed');
+      const data = await res.json();
+
+      if (asset.type === 'headshot') {
+        const el = document.querySelector(asset.selector);
+        el.src = data.url || asset.fallback;
       }
-    });
-  } else {
-    cvLinks.forEach((link) => fadeIn(link)); // fallback
+
+      if (asset.type === 'cv') {
+        const elPrimary = document.querySelector(asset.selector);
+        const elSecondary = document.querySelector('#cv-download-link-secondary');
+        const cvUrl = data.url || asset.fallback;
+        if (elPrimary) elPrimary.href = cvUrl;
+        if (elSecondary) elSecondary.href = cvUrl;
+      }
+
+      if (asset.type === 'video') {
+        const el = document.querySelector(asset.selector);
+        el.src = data.url || asset.fallback;
+        const videoEl = el.parentElement;
+        if (videoEl && videoEl.tagName === 'VIDEO') {
+          videoEl.load(); // refresh video source
+        }
+      }
+
+    } catch (err) {
+      console.warn(`Failed to load ${asset.type}, using fallback`, err);
+      if (asset.type === 'headshot') document.querySelector(asset.selector).src = asset.fallback;
+      if (asset.type === 'cv') {
+        document.querySelector(asset.selector).href = asset.fallback;
+        document.querySelector('#cv-download-link-secondary').href = asset.fallback;
+      }
+      if (asset.type === 'video') {
+        const el = document.querySelector(asset.selector);
+        el.src = asset.fallback;
+        el.parentElement.load();
+      }
+    }
   }
 
-  // Update intro video
-  const videoEl = document.getElementById("introVideo");
-  const videoData = await fetchLatest("video");
-  if (videoData && videoEl) {
-    const sourceEl = videoEl.querySelector("source");
-    if (sourceEl) sourceEl.src = videoData.url;
-    videoEl.load();
-    fadeIn(videoEl);
-  } else if (videoEl) {
-    fadeIn(videoEl); // fallback
-  }
+  // Fade-in animation
+  const fadeEls = document.querySelectorAll('.fade-in');
+  fadeEls.forEach(el => el.classList.add('visible'));
 
-  // Fade-in nav and sections
-  document.querySelectorAll(".fade-in").forEach((el) => fadeIn(el));
+  // Update footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });

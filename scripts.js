@@ -1,41 +1,34 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const assets = [
-    { type: 'headshot', selector: '#headshot', fallback: 'Credentials/fallback-headshot.png' },
-    { type: 'cv', selector: '#cv-download-link', fallback: 'Credentials/fallback-cv.pdf' },
-    { type: 'video', selector: '#introVideo source', fallback: 'Credentials/fallback-video.mp4' }
-  ];
+// ==============================
+// Smooth fade-in animation on scroll
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  // Intersection Observer for fade-in elements
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
 
-  const setAsset = (asset, url) => {
-    const el = document.querySelector(asset.selector);
-    if (!el) return;
-    switch(asset.type){
-      case 'headshot':
-        el.src = url;
-        break;
-      case 'cv':
-        document.querySelector(asset.selector)?.setAttribute('href', url);
-        document.querySelector('#cv-download-link-secondary')?.setAttribute('href', url);
-        break;
-      case 'video':
-        el.src = url;
-        el.parentElement?.load();
-        break;
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Auto-update footer year
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Dynamic latest assets fetch (if get-latest API available)
+  const fetchAsset = async (type, targetId) => {
+    try {
+      const res = await fetch(`/api/get-latest?type=${type}`);
+      if(!res.ok) throw new Error('Fetch failed');
+      const url = await res.text();
+      const el = document.getElementById(targetId);
+      if(el) el.src = url;
+    } catch(e) {
+      console.warn(`Could not fetch latest ${type}:`, e);
     }
-  }
+  };
 
-  for(const asset of assets){
-    try{
-      const res = await fetch(`/api/get-latest?type=${asset.type}`);
-      const data = res.ok ? await res.json() : null;
-      setAsset(asset, data?.url || asset.fallback);
-    }catch{
-      setAsset(asset, asset.fallback);
-    }
-  }
-
-  // Fade-in
-  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  fetchAsset('headshot', 'headshot');
+  fetchAsset('cv', 'cv-download-link');
+  fetchAsset('video', 'introVideo');
 });

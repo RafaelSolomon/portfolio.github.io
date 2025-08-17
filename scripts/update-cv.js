@@ -1,4 +1,3 @@
-// scripts/update-cv.js
 const fs = require("fs");
 const path = require("path");
 
@@ -21,7 +20,6 @@ if (fs.existsSync(jsonFilePath)) {
   }
 }
 
-// Sync version + timestamp
 jsonData.version = (typeof jsonData.version === "number" ? jsonData.version : 0) + 1;
 jsonData.lastUpdated = new Date().toISOString();
 

@@ -1,17 +1,13 @@
 {
   "name": "portfolio.github.io",
   "version": "1.0.0",
-  "description": "Portfolio site for Jan Angelo Bacucang, PhRN",
-  "main": "index.js",
   "scripts": {
-    "dev": "npx vercel dev",
-    "build": "npx vercel build",
-    "deploy": "npx vercel deploy"
+    "dev": "live-server --open=./index.html",
+    "vercel-dev": "vercel dev",
+    "deploy": "vercel --prod"
   },
-  "keywords": [],
-  "author": "Jan Angelo Bacucang, PhRN",
-  "license": "ISC",
   "devDependencies": {
-    "vercel": "^46.0.1"
+    "live-server": "^1.2.2",
+    "vercel": "^36.0.0"
   }
 }

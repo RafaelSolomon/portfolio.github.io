@@ -62,3 +62,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     videoEl.load();
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Auto-update footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Fade-in on scroll
+  const faders = document.querySelectorAll(".fade-in");
+
+  const appearOptions = {
+    threshold: 0.2, // element must be 20% visible
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+});
+

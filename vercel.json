@@ -1,8 +1,6 @@
 {
   "version": 2,
   "builds": [
-    { "src": "*.{html,css,js}", "use": "@vercel/static" },
-    { "src": "Credentials/**", "use": "@vercel/static" },
     {
       "src": "Back-end/api/get-latest.js",
       "use": "@vercel/node",

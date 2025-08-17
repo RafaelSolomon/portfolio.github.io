@@ -16,7 +16,7 @@
     <p class="subtitle">AI Trainer & Consultant â€¢ Medical Records Reviewer â€¢ NY WCB Claims Adjudicator</p>
     <img id="headshot" src="Credentials/fallback-headshot.png" alt="Jan Angelo Bacucang headshot" />
     <p>
-      <a id="cv" href="Credentials/fallback-cv.pdf" target="_blank">ðŸ“„ Download CV</a>
+      <a id="cv-download-link" class="button" href="Credentials/fallback-cv.pdf" target="_blank">í³„ Download CV</a>
     </p>
     <video id="introVideo" controls>
       <source src="Credentials/fallback-video.mp4" type="video/mp4">
@@ -68,7 +68,7 @@
   <!-- CV -->
   <section class="fade-in" id="cv-section">
     <h2>My CV</h2>
-    <a id="cv-download-link" class="btn btn-primary" href="Credentials/fallback-cv.pdf" target="_blank">ðŸ“„ Download CV</a>
+    <a id="cv-download-link-secondary" class="button" href="Credentials/fallback-cv.pdf" target="_blank">í³„ Download CV</a>
   </section>
 
   <!-- Contact -->
@@ -84,58 +84,6 @@
     Â© <span id="year"></span> Jan Angelo Bacucang, PhRN â€” AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Update year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Fade-in effect trigger
-    window.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".fade-in").forEach(el => {
-        el.classList.add("show");
-      });
-    });
-
-    // Try to fetch latest assets from API
-    async function updateAssets() {
-      try {
-        // CV
-        const cvRes = await fetch("/api/get-latest?type=cv");
-        const cvLink = document.getElementById("cv-download-link");
-        if (cvRes.ok) {
-          const { url, latest_file } = await cvRes.json();
-          if (url) {
-            cvLink.href = url;
-            cvLink.setAttribute("download", latest_file);
-            cvLink.textContent = "ðŸ“„ Download " + latest_file;
-          }
-        }
-
-        // Headshot
-        const hsRes = await fetch("/api/get-latest?type=headshot");
-        const profilePhoto = document.getElementById("headshot");
-        if (hsRes.ok) {
-          const { url } = await hsRes.json();
-          if (url) {
-            profilePhoto.src = url;
-          }
-        }
-
-        // Video
-        const vidRes = await fetch("/api/get-latest?type=video");
-        const video = document.getElementById("introVideo").querySelector("source");
-        if (vidRes.ok) {
-          const { url } = await vidRes.json();
-          if (url) {
-            video.src = url;
-            document.getElementById("introVideo").load();
-          }
-        }
-      } catch (err) {
-        console.warn("Using fallback assets:", err);
-      }
-    }
-    updateAssets();
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>

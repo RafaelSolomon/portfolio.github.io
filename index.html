@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jan Angelo Bacucang — Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jan Angelo Bacucang, PhRN — AI Trainer & Claims Adjudicator</title>
+  <meta name="description" content="Portfolio of Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header / Hero Section -->
-  <header class="hero">
-    <div class="profile-container">
-      <img id="profile-photo" src="/Credentials/portfolio-headshot.png" alt="Jan Angelo Bacucang" class="profile-photo">
-      <h1>Jan Angelo Bacucang, PhRN</h1>
-      <p>AI Trainer | Medical Records Reviewer | NY WCB Claims Adjudicator</p>
-      <a id="cv-link" href="/Credentials/cv.pdf" target="_blank" class="cv-button">Download CV</a>
-
-      <!-- Optional Introduction Video -->
-      <video id="intro-video" controls style="margin-top:1.5rem; max-width:100%;">
-        <source src="" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+  <header class="fade-in">
+    <img id="headshot" src="/Credentials/fallback-headshot.png" alt="Professional headshot of Jan Angelo Bacucang" class="headshot">
+    <h1>Jan Angelo Bacucang, PhRN</h1>
+    <h2>AI Trainer · Medical Records Reviewer · NY WCB Claims Adjudicator</h2>
   </header>
 
-  <!-- Main Content -->
   <main>
-    <section class="about">
-      <h2>About Me</h2>
-      <p>Welcome! I specialize in AI training, medical records review, and claims adjudication. Explore my portfolio and learn more about my work.</p>
+    <section class="fade-in">
+      <a id="downloadCV" href="/Credentials/fallback-cv.pdf" class="btn">Download CV</a>
+      <noscript><p><a href="/Credentials/fallback-cv.pdf">Download CV (static)</a></p></noscript>
     </section>
 
-    <section class="portfolio">
-      <h2>Portfolio</h2>
-      <!-- Portfolio items can go here -->
+    <section class="fade-in">
+      <video id="introVideo" controls poster="/Credentials/fallback-headshot.png">
+        <source src="/Credentials/fallback-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <noscript><p><a href="/Credentials/fallback-video.mp4">Watch Intro Video</a></p></noscript>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Jan Angelo Bacucang. All rights reserved.</p>
+  <footer class="fade-in">
+    <p>© <span id="year"></span> Jan Angelo Bacucang. All rights reserved.</p>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -1,48 +1,34 @@
+// get-latest.js
 import fs from "fs";
 import path from "path";
 
 export default async function handler(req, res) {
   try {
     const { type } = req.query;
+    if (!type) return res.status(400).json({ error: "Type is required" });
 
-    // Map type to folder name
-    const folderMap = {
-      headshot: "headshots",
-      cv: "cv",
-      video: "videos"
-    };
-
-    if (!folderMap[type]) {
-      return res.status(400).json({ error: "Invalid type" });
-    }
-
-    // Build folder path
-    const folderPath = path.join(process.cwd(), "Credentials", folderMap[type]);
-
+    const folderPath = path.join(process.cwd(), "Credentials", type);
     if (!fs.existsSync(folderPath)) {
-      return res.status(404).json({ error: `No folder found for ${type}` });
+      return res.status(404).json({ error: "Folder not found" });
     }
 
-    // Read files and sort by modified date (latest first)
-    const files = fs
-      .readdirSync(folderPath)
-      .map(file => ({
-        name: file,
-        time: fs.statSync(path.join(folderPath, file)).mtime.getTime()
-      }))
-      .sort((a, b) => b.time - a.time);
-
+    const files = fs.readdirSync(folderPath).filter(f => !f.startsWith("."));
     if (files.length === 0) {
-      return res.status(404).json({ error: `No files found for ${type}` });
+      return res.status(404).json({ error: "No files found" });
     }
 
-    // Build a public URL to serve the file
-    const latestFile = files[0].name;
-    const fileUrl = `${req.headers.origin}/Credentials/${folderMap[type]}/${latestFile}`;
+    // Sort by modified time
+    const latestFile = files
+      .map(file => ({
+        file,
+        time: fs.statSync(path.join(folderPath, file)).mtime
+      }))
+      .sort((a, b) => b.time - a.time)[0].file;
 
-    return res.status(200).json({ url: fileUrl });
+    const fileUrl = `/Credentials/${type}/${latestFile}`;
+    return res.status(200).json({ url: fileUrl, latest_file: latestFile });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: "Internal server error" });
   }
 }

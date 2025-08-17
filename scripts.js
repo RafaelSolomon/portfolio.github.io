@@ -32,3 +32,4 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAsset('cv', 'cv-download-link');
   fetchAsset('video', 'introVideo');
 });
+// scripts.js

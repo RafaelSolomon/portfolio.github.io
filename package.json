@@ -12,6 +12,6 @@
   "author": "Jan Angelo Bacucang, PhRN",
   "license": "ISC",
   "devDependencies": {
-    "vercel": "^36.0.0"
+    "vercel": "^46.0.1"
   }
 }

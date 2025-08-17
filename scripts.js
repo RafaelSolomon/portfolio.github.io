@@ -1,77 +1,67 @@
 // scripts.js
-document.addEventListener("DOMContentLoaded", () => {
-  // Footer year
-  const yearSpan = document.getElementById("year");
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Fade-in on scroll
-  const faders = document.querySelectorAll(".fade-in");
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-  );
-  faders.forEach(el => observer.observe(el));
+document.addEventListener("DOMContentLoaded", async () => {
+  // Fade-in helper
+  const fadeIn = (el) => {
+    if (!el) return;
+    el.classList.add("visible");
+  };
 
-  // Helper to fetch latest asset URL
-  async function fetchLatest(type) {
+  // Update year in footer
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Fetch latest asset from API
+  const fetchLatest = async (type) => {
     try {
-      const res = await fetch(`/api/get-latest?type=${encodeURIComponent(type)}`);
-      if (!res.ok) throw new Error(`${type} fetch failed (${res.status})`);
-      const data = await res.json();
-      return data?.url || null;
+      const res = await fetch(`/api/get-latest?type=${type}`);
+      if (!res.ok) throw new Error(`${type} not found`);
+      return await res.json();
     } catch (err) {
-      console.warn(`Using fallback for ${type}:`, err.message);
+      console.warn(`Failed to load ${type}:`, err.message);
       return null;
     }
+  };
+
+  // Update headshot
+  const headshotEl = document.getElementById("headshot");
+  const headshotData = await fetchLatest("headshot");
+  if (headshotData && headshotEl) {
+    headshotEl.src = headshotData.url;
+    fadeIn(headshotEl);
+  } else {
+    fadeIn(headshotEl); // fallback already in HTML
   }
 
-  // HEADSHOT
-  (async () => {
-    const img = document.getElementById("headshot");
-    if (!img) return;
-    img.onerror = () => {
-      // graceful fallback
-      img.src = "Credentials/fallback-headshot.png";
-    };
-    const url = await fetchLatest("headshot");
-    if (url) img.src = url;
-  })();
+  // Update CV links
+  const cvLinks = [
+    document.getElementById("cv-download-link"),
+    document.getElementById("cv-download-link-secondary"),
+  ];
+  const cvData = await fetchLatest("cv");
+  if (cvData) {
+    cvLinks.forEach((link) => {
+      if (link) {
+        link.href = cvData.url;
+        fadeIn(link);
+      }
+    });
+  } else {
+    cvLinks.forEach((link) => fadeIn(link)); // fallback
+  }
 
-  // CV (both buttons)
-  (async () => {
-    const links = [
-      document.getElementById("cv-download-link"),
-      document.getElementById("cv-download-link-secondary")
-    ].filter(Boolean);
-
-    const url = await fetchLatest("cv");
-    if (url && links.length) {
-      links.forEach(link => {
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener";
-        // let browser name the file naturally; add this to force download name if you want:
-        // link.setAttribute("download", "Jan_Angelo_Bacucang_CV.pdf");
-      });
-    }
-  })();
-
-  // VIDEO
-  (async () => {
-    const videoEl = document.getElementById("introVideo");
-    if (!videoEl) return;
+  // Update intro video
+  const videoEl = document.getElementById("introVideo");
+  const videoData = await fetchLatest("video");
+  if (videoData && videoEl) {
     const sourceEl = videoEl.querySelector("source");
-    const url = await fetchLatest("video");
-    if (url && sourceEl) {
-      sourceEl.src = url;
-      // reload sources
-      videoEl.load();
-    }
-  })();
+    if (sourceEl) sourceEl.src = videoData.url;
+    videoEl.load();
+    fadeIn(videoEl);
+  } else if (videoEl) {
+    fadeIn(videoEl); // fallback
+  }
+
+  // Fade-in nav and sections
+  document.querySelectorAll(".fade-in").forEach((el) => fadeIn(el));
 });

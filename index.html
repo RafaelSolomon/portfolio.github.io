@@ -13,7 +13,7 @@
   <meta property="og:title" content="Jan Angelo Bacucang, PhRN — AI Trainer & Consultant">
   <meta property="og:description" content="Helping financial & healthcare teams adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/Credentials/headshot/fallback-headshot.png">
+  <meta property="og:image" content="/Credentials/fallback-headshot.png">
   <meta property="og:url" content="https://your-domain.example/">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -24,16 +24,17 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Smooth scroll for anchors (progressive enhancement via CSS) -->
+  <!-- Smooth scroll -->
   <style>html{scroll-behavior:smooth}</style>
 </head>
+
 <body>
-  <!-- Profile / Hero -->
+  <!-- Profile / Hero Section -->
   <section class="fade-in" id="profile" aria-labelledby="site-title">
     <h1 id="site-title">Jan Angelo Bacucang, PhRN</h1>
     <p class="subtitle">AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
 
-    <!-- Add width/height to prevent layout shift -->
+    <!-- Headshot -->
     <img
       id="headshot"
       src="Credentials/fallback-headshot.png"
@@ -44,12 +45,14 @@
       loading="eager"
     />
 
+    <!-- CV Download -->
     <p>
       <a id="cv-download-link" class="button" href="Credentials/fallback-cv.pdf" target="_blank" rel="noopener">
         ⬇️ Download CV
       </a>
     </p>
 
+    <!-- Intro Video -->
     <video id="introVideo" controls width="520" preload="metadata">
       <source src="Credentials/fallback-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
@@ -97,7 +100,7 @@
     </ul>
   </section>
 
-  <!-- CV -->
+  <!-- CV Section -->
   <section class="fade-in" id="cv-section" aria-labelledby="cv-title">
     <h2 id="cv-title">My CV</h2>
     <a id="cv-download-link-secondary" class="button" href="Credentials/fallback-cv.pdf" target="_blank" rel="noopener">
@@ -118,13 +121,14 @@
     © <span id="year"></span> Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator
   </footer>
 
+  <!-- No JS fallback -->
   <noscript>
     <p style="text-align:center;color:#666;margin:1rem;">
       JavaScript is disabled. Static fallbacks are shown; dynamic assets will load when JS is enabled.
     </p>
   </noscript>
 
-  <!-- Defer JS -->
+  <!-- Scripts -->
   <script src="scripts.js" defer></script>
 </body>
 </html>

@@ -30,7 +30,8 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/get-latest", "destination": "/api/get-latest.js" }
+    { "source": "/api/get-latest", "destination": "/api/get-latest.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -39,8 +40,5 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

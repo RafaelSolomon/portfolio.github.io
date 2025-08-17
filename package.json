@@ -10,3 +10,7 @@
   "author": "",
   "license": "ISC"
 }
+"scripts": {
+  "dev": "vercel dev"
+}
+

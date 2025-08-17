@@ -1,22 +1,17 @@
 {
   "name": "portfolio.github.io",
   "version": "1.0.0",
-  "description": "Personal portfolio with dynamic CV and headshot updates",
+  "description": "Portfolio site for Jan Angelo Bacucang, PhRN",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vercel dev",
-    "serve": "live-server --config=live-server.config.js"
+    "dev": "npx vercel dev",
+    "build": "npx vercel build",
+    "deploy": "npx vercel deploy"
   },
-  "keywords": [
-    "portfolio",
-    "vercel",
-    "cv",
-    "personal-website"
-  ],
-  "author": "Jan Angelo Bacucang",
+  "keywords": [],
+  "author": "Jan Angelo Bacucang, PhRN",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "vercel": "^36.0.0"
   }
 }

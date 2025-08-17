@@ -9,35 +9,10 @@
     }
   },
   "headers": [
-    {
-      "source": "/Credentials/*.pdf",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/Credentials/*.{png,jpg,jpeg,webp}",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/Credentials/*.{mp4,mov,webm}",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    }
+    { "source": "/Credentials/*.pdf", "headers":[{"key":"Cache-Control","value":"public, max-age=3600, must-revalidate"}]},
+    { "source": "/Credentials/*.{png,jpg,jpeg,webp}", "headers":[{"key":"Cache-Control","value":"public, max-age=3600, must-revalidate"}]},
+    { "source": "/Credentials/*.{mp4,mov,webm}", "headers":[{"key":"Cache-Control","value":"public, max-age=3600, must-revalidate"}]}
   ],
-  "rewrites": [
-    {
-      "source": "/api/get-latest",
-      "destination": "/api/get-latest.js"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "rewrites":[{"source":"/api/get-latest","destination":"/api/get-latest.js"}],
+  "routes":[{"src":"/(.*)","dest":"/index.html"}]
 }

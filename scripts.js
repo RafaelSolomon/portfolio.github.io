@@ -1,89 +1,77 @@
-// Update year
+// scripts.js
 document.addEventListener("DOMContentLoaded", () => {
+  // Footer year
   const yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-});
-
-// Fade-in sections on load (simple: show all once DOM is ready)
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".fade-in, section").forEach(el => {
-    el.classList.add("show");
-  });
-});
-
-// Fetch helper
-async function fetchLatest(type) {
-  try {
-    const res = await fetch(`/api/get-latest?type=${type}`);
-    if (!res.ok) throw new Error(`Failed to fetch ${type}`);
-    const data = await res.json();
-    return data.url || null;
-  } catch (err) {
-    console.warn(`Using fallback for ${type}:`, err.message);
-    return null;
-  }
-}
-
-// Load latest headshot
-document.addEventListener("DOMContentLoaded", async () => {
-  const img = document.getElementById("headshot");
-  const url = await fetchLatest("headshot");
-  if (img && url) {
-    img.src = url;
-    img.classList.add("show");
-  }
-});
-
-// Load latest CV (both hero button and CV section button)
-document.addEventListener("DOMContentLoaded", async () => {
-  const links = [
-    document.getElementById("cv-download-link"),
-    document.getElementById("cv-download-link-secondary"),
-  ].filter(Boolean);
-
-  const url = await fetchLatest("cv");
-  if (url) {
-    links.forEach(link => {
-      link.href = url;
-      link.target = "_blank";
-      link.setAttribute("download", "");
-    });
-  }
-});
-
-// Load latest video
-document.addEventListener("DOMContentLoaded", async () => {
-  const videoEl = document.getElementById("introVideo");
-  if (!videoEl) return;
-  const sourceEl = videoEl.querySelector("source");
-  const url = await fetchLatest("video");
-  if (url && sourceEl) {
-    sourceEl.src = url;
-    videoEl.load();
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // Auto-update footer year
-  document.getElementById("year").textContent = new Date().getFullYear();
 
   // Fade-in on scroll
   const faders = document.querySelectorAll(".fade-in");
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+  );
+  faders.forEach(el => observer.observe(el));
 
-  const appearOptions = {
-    threshold: 0.2, // element must be 20% visible
-    rootMargin: "0px 0px -50px 0px"
-  };
+  // Helper to fetch latest asset URL
+  async function fetchLatest(type) {
+    try {
+      const res = await fetch(`/api/get-latest?type=${encodeURIComponent(type)}`);
+      if (!res.ok) throw new Error(`${type} fetch failed (${res.status})`);
+      const data = await res.json();
+      return data?.url || null;
+    } catch (err) {
+      console.warn(`Using fallback for ${type}:`, err.message);
+      return null;
+    }
+  }
 
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
+  // HEADSHOT
+  (async () => {
+    const img = document.getElementById("headshot");
+    if (!img) return;
+    img.onerror = () => {
+      // graceful fallback
+      img.src = "Credentials/fallback-headshot.png";
+    };
+    const url = await fetchLatest("headshot");
+    if (url) img.src = url;
+  })();
 
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
+  // CV (both buttons)
+  (async () => {
+    const links = [
+      document.getElementById("cv-download-link"),
+      document.getElementById("cv-download-link-secondary")
+    ].filter(Boolean);
+
+    const url = await fetchLatest("cv");
+    if (url && links.length) {
+      links.forEach(link => {
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        // let browser name the file naturally; add this to force download name if you want:
+        // link.setAttribute("download", "Jan_Angelo_Bacucang_CV.pdf");
+      });
+    }
+  })();
+
+  // VIDEO
+  (async () => {
+    const videoEl = document.getElementById("introVideo");
+    if (!videoEl) return;
+    const sourceEl = videoEl.querySelector("source");
+    const url = await fetchLatest("video");
+    if (url && sourceEl) {
+      sourceEl.src = url;
+      // reload sources
+      videoEl.load();
+    }
+  })();
 });
-

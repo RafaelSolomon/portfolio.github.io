@@ -3,29 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator</title>
-  <meta name="description" content="Portfolio of Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows." />
-  <meta name="keywords" content="AI trainer, AI consultant, prompt engineering, workflow automation, AI governance, fintech, healthcare, medical records reviewer, NY WCB claims adjudicator" />
-  <meta name="author" content="Jan Angelo Bacucang, PhRN" />
+  <meta name="description" content="Portfolio of Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, and NY WCB Claims Adjudicator helping financial and healthcare firms adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.">
+  <meta name="keywords" content="AI trainer, AI consultant, prompt engineering, workflow automation, AI governance, fintech, healthcare, medical records reviewer, NY WCB claims adjudicator">
+  <meta name="author" content="Jan Angelo Bacucang, PhRN">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Jan Angelo Bacucang, PhRN — AI Trainer & Consultant">
+  <meta property="og:description" content="Helping financial & healthcare teams adopt ChatGPT, prompt engineering, and compliance-aware AI workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/Credentials/headshot/fallback-headshot.png">
+  <meta property="og:url" content="https://your-domain.example/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Canonical + Favicon -->
+  <link rel="canonical" href="https://your-domain.example/">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Smooth scroll for anchors (progressive enhancement via CSS) -->
+  <style>html{scroll-behavior:smooth}</style>
 </head>
 <body>
   <!-- Profile / Hero -->
-  <section class="fade-in" id="profile">
-    <h1>Jan Angelo Bacucang, PhRN</h1>
+  <section class="fade-in" id="profile" aria-labelledby="site-title">
+    <h1 id="site-title">Jan Angelo Bacucang, PhRN</h1>
     <p class="subtitle">AI Trainer & Consultant • Medical Records Reviewer • NY WCB Claims Adjudicator</p>
-    <img id="headshot" src="Credentials/fallback-headshot.png" alt="Jan Angelo Bacucang headshot" />
+
+    <!-- Add width/height to prevent layout shift -->
+    <img
+      id="headshot"
+      src="Credentials/fallback-headshot.png"
+      alt="Portrait of Jan Angelo Bacucang"
+      width="180"
+      height="180"
+      decoding="async"
+      loading="eager"
+    />
+
     <p>
-      <a id="cv-download-link" class="button" href="Credentials/fallback-cv.pdf" target="_blank" rel="noopener">⬇️ Download CV</a>
+      <a id="cv-download-link" class="button" href="Credentials/fallback-cv.pdf" target="_blank" rel="noopener">
+        ⬇️ Download CV
+      </a>
     </p>
-    <video id="introVideo" controls>
+
+    <video id="introVideo" controls width="520" preload="metadata">
       <source src="Credentials/fallback-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </section>
 
   <!-- Navigation -->
-  <nav class="fade-in">
+  <nav class="fade-in" aria-label="Primary">
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#experience">Experience</a>
@@ -34,16 +66,16 @@
   </nav>
 
   <!-- About -->
-  <section class="fade-in" id="about">
-    <h2>About Me</h2>
+  <section class="fade-in" id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
     <p>
       I translate AI into measurable business value for regulated financial and healthcare teams, focusing on ChatGPT, prompt engineering, and compliance-aware AI workflows. My expertise includes medical records review and NY WCB claims adjudication with a proven track record of accuracy and compliance.
     </p>
   </section>
 
   <!-- Services -->
-  <section class="fade-in" id="services">
-    <h2>Services</h2>
+  <section class="fade-in" id="services" aria-labelledby="services-title">
+    <h2 id="services-title">Services</h2>
     <ul>
       <li>Executive AI Workshops</li>
       <li>Prompt Engineering & Playbooks</li>
@@ -56,8 +88,8 @@
   </section>
 
   <!-- Experience -->
-  <section class="fade-in" id="experience">
-    <h2>Experience Snapshot</h2>
+  <section class="fade-in" id="experience" aria-labelledby="experience-title">
+    <h2 id="experience-title">Experience Snapshot</h2>
     <ul>
       <li>Adjudicated 10,000+ NY WCB claims with 100% compliance.</li>
       <li>Improved workflow efficiency by 15% in multiple roles.</li>
@@ -66,14 +98,16 @@
   </section>
 
   <!-- CV -->
-  <section class="fade-in" id="cv-section">
-    <h2>My CV</h2>
-    <a id="cv-download-link-secondary" class="button" href="Credentials/cv.pdf" target="_blank" rel="noopener">⬇️ Download CV</a>
+  <section class="fade-in" id="cv-section" aria-labelledby="cv-title">
+    <h2 id="cv-title">My CV</h2>
+    <a id="cv-download-link-secondary" class="button" href="Credentials/fallback-cv.pdf" target="_blank" rel="noopener">
+      ⬇️ Download CV
+    </a>
   </section>
 
   <!-- Contact -->
-  <section class="fade-in" id="contact">
-    <h2>Contact</h2>
+  <section class="fade-in" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
     <p>Email: <a href="mailto:jabacucang@gmail.com">jabacucang@gmail.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/jbacucang" target="_blank" rel="noopener">linkedin.com/in/jbacucang</a></p>
     <p>Phone: <a href="tel:+639991452713">+63 999 145 2713</a></p>
@@ -84,6 +118,13 @@
     © <span id="year"></span> Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator
   </footer>
 
-  <script src="scripts.js"></script>
+  <noscript>
+    <p style="text-align:center;color:#666;margin:1rem;">
+      JavaScript is disabled. Static fallbacks are shown; dynamic assets will load when JS is enabled.
+    </p>
+  </noscript>
+
+  <!-- Defer JS -->
+  <script src="scripts.js" defer></script>
 </body>
 </html>

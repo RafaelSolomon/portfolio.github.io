@@ -1,48 +1,44 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ==============================
-  // Fade-in animation on scroll
-  // ==============================
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // ==============================
-  // Auto-update footer year
-  // ==============================
-  const yearEl = document.getElementById('year');
-  if(yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // ==============================
-  // Fetch latest assets dynamically
-  // ==============================
-  const fetchAsset = async (type, targetId) => {
-    try {
-      const res = await fetch(`/api/get-latest?type=${type}`);
-      if (!res.ok) throw new Error("Fetch failed");
-
-      const data = await res.json();
-      const el = document.getElementById(targetId);
-
-      if (el) {
-        if (el.tagName === "A") {
-          el.href = data.url; // For links
-        } else {
-          el.src = data.url; // For images/videos
-        }
-      }
-    } catch (e) {
-      console.warn(`Could not fetch latest ${type}:`, e);
+// ----------------------
+// CV & Headshot Loader
+// ----------------------
+async function loadCV() {
+  try {
+    const res = await fetch("/api/get-latest?type=cv");
+    const data = await res.json();
+    const cvLink = document.getElementById("cv-link");
+    if (cvLink && data.url) {
+      cvLink.href = data.url;
+      cvLink.style.display = "inline"; // make visible
     }
-  };
+  } catch (err) {
+    console.error("Failed to load CV:", err);
+  }
+}
 
-  fetchAsset("headshot", "headshot");
-  fetchAsset("cv", "cv-download-link");
-  fetchAsset("video", "introVideo");
+async function loadHeadshot() {
+  try {
+    const res = await fetch("/api/get-latest?type=headshot");
+    const data = await res.json();
+    const headshot = document.getElementById("headshot");
+    if (headshot && data.url) {
+      headshot.src = data.url;
+      headshot.style.display = "block"; // make visible
+    }
+  } catch (err) {
+    console.error("Failed to load headshot:", err);
+  }
+}
+
+// ----------------------
+// Page Init
+// ----------------------
+document.addEventListener("DOMContentLoaded", () => {
+  // Load dynamic assets
+  loadCV();
+  loadHeadshot();
+
+  // If you already had other DOMContentLoaded code (menus, animations, etc.),
+  // keep it here. Example:
+  // initNavbar();
+  // initAnimations();
 });

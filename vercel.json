@@ -4,11 +4,10 @@
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "src/styles.css", "use": "@vercel/static" },
     { "src": "src/scripts.js", "use": "@vercel/static" },
-    { "src/public/**", "use": "@vercel/static" }
+    { "src": "public/**", "use": "@vercel/static" }
   ],
-  "routes": [
-    { "src": "/", "dest": "index.html" },
-    { "src": "/public/(.*)", "dest": "/public/$1" }
+  "rewrites": [
+    { "source": "/public/(.*)", "destination": "/public/$1" }
   ],
   "headers": [
     {

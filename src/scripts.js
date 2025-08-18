@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Ensure headshot is displayed
   const headshot = document.getElementById("headshot");
-  if (headshot) headshot.src = "/public/headshot.png";
+  if (headshot) headshot.src = "public/headshot.png";
 
   // Ensure CV link works
   const cvLink = document.getElementById("cv-link");
-  if (cvLink) cvLink.href = "/public/cv.pdf";
+  if (cvLink) cvLink.href = "public/cv.pdf";
 
   // Smooth scroll for nav links
   document.querySelectorAll("nav a[href^='#']").forEach(anchor => {

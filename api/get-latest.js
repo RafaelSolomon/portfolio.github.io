@@ -1,46 +1,45 @@
 // api/get-latest.js
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
-export default async function handler(req, res) {
+const CREDENTIALS_DIR = path.join(__dirname, "..", "Credentials");
+
+module.exports = async (req, res) => {
   try {
-    const { type } = req.query;
+    const type = req.query.type;
 
-    if (!type || !["headshot", "cv", "video"].includes(type)) {
-      res.status(400).json({ error: "Invalid type. Must be headshot, cv, or video." });
-      return;
+    let folder, exts;
+    if (type === "cv") {
+      folder = path.join(CREDENTIALS_DIR, "cv");
+      exts = [".pdf"];
+    } else if (type === "headshot") {
+      folder = path.join(CREDENTIALS_DIR, "headshot");
+      exts = [".png", ".jpg", ".jpeg", ".webp"];
+    } else if (type === "video") {
+      folder = path.join(CREDENTIALS_DIR, "video");
+      exts = [".mp4", ".mov"];
+    } else {
+      return res.status(400).json({ error: "Invalid type" });
     }
 
-    const credentialsDir = path.join(process.cwd(), "Credentials");
+    const files = fs.readdirSync(folder)
+      .filter(f => exts.includes(path.extname(f).toLowerCase()));
 
-    const typeMap = {
-      headshot: ["headshot", "fallback-headshot.png", "fallback-headshot.webp"],
-      cv: ["cv", "fallback-cv.pdf"],
-      video: ["video", "fallback-video.mp4"]
-    };
-
-    const [subfolder, ...fallbacks] = typeMap[type];
-    const targetDir = path.join(credentialsDir, subfolder || "");
-
-    let files = [];
-    try {
-      files = fs.readdirSync(targetDir)
-        .filter(f => !f.startsWith("."))
-        .sort(
-          (a, b) =>
-            fs.statSync(path.join(targetDir, b)).mtimeMs -
-            fs.statSync(path.join(targetDir, a)).mtimeMs
-        );
-    } catch {
-      files = [];
+    if (files.length === 0) {
+      return res.status(404).json({ error: "No file found" });
     }
 
-    const latestFile = files.length > 0 ? `${subfolder}/${files[0]}` : fallbacks[0];
+    // Get latest by modification time
+    const latest = files
+      .map(f => ({
+        file: f,
+        time: fs.statSync(path.join(folder, f)).mtimeMs
+      }))
+      .sort((a, b) => b.time - a.time)[0].file;
 
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json({ url: `/Credentials/${latestFile}` });
+    res.json({ url: `/Credentials/${type}/${latest}` });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Server error" });
   }
-}
+};

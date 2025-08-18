@@ -1,18 +1,15 @@
-// ----------------------
-// Landing Page Scripts
-// ----------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // Set headshot image
+  // Set headshot image (served from public folder root)
   const headshot = document.getElementById("headshot");
   if (headshot) {
-    headshot.src = "/public/headshot.png";
+    headshot.src = "/headshot.png";
     headshot.style.display = "block"; // ensure visible
   }
 
-  // Set CV download link
+  // Set CV download link (served from public folder root)
   const cvLink = document.getElementById("cv-link");
   if (cvLink) {
-    cvLink.href = "/public/cv.pdf";
+    cvLink.href = "/cv.pdf";
     cvLink.style.display = "inline-block"; // ensure visible
   }
 
@@ -36,6 +33,5 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { threshold: 0.2 }
   );
-
   document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 });

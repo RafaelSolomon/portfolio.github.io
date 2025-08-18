@@ -1,15 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "src/index.html", "use": "@vercel/static" },
+    { "src": "index.html", "use": "@vercel/static" },
     { "src": "src/styles.css", "use": "@vercel/static" },
     { "src": "src/scripts.js", "use": "@vercel/static" },
     { "src": "public/**", "use": "@vercel/static" }
   ],
-  "rewrites": [
-    { "source": "/", "destination": "/src/index.html" },
-    { "source": "/public/(.*)", "destination": "/public/$1" },
-    { "source": "/(.*)", "destination": "/src/$1" }
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/public/(.*)", "dest": "/public/$1" },
+    { "src": "/src/(.*)", "dest": "/src/$1" }
   ],
   "headers": [
     {

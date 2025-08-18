@@ -6,10 +6,10 @@
     { "src": "src/scripts.js", "use": "@vercel/static" },
     { "src": "public/**", "use": "@vercel/static" }
   ],
-  "routes": [
-    { "src": "/", "dest": "src/index.html" },
-    { "src": "/public/(.*)", "dest": "/public/$1" },
-    { "src": "/(.*)", "dest": "/src/$1" }
+  "rewrites": [
+    { "source": "/", "destination": "/src/index.html" },
+    { "source": "/public/(.*)", "destination": "/public/$1" },
+    { "source": "/(.*)", "destination": "/src/$1" }
   ],
   "headers": [
     {

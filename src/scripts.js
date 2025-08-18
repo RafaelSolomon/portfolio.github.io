@@ -1,17 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Set headshot image (served from public folder root)
+  // Ensure headshot is displayed
   const headshot = document.getElementById("headshot");
-  if (headshot) {
-    headshot.src = "/headshot.png";
-    headshot.style.display = "block"; // ensure visible
-  }
+  if (headshot) headshot.src = "/public/headshot.png";
 
-  // Set CV download link (served from public folder root)
+  // Ensure CV link works
   const cvLink = document.getElementById("cv-link");
-  if (cvLink) {
-    cvLink.href = "/cv.pdf";
-    cvLink.style.display = "inline-block"; // ensure visible
-  }
+  if (cvLink) cvLink.href = "/public/cv.pdf";
 
   // Smooth scroll for nav links
   document.querySelectorAll("nav a[href^='#']").forEach(anchor => {
@@ -22,16 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fade-in sections on scroll
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+  // Fade-in sections
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.2 });
+
   document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 });

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator</title>
-  <link rel="stylesheet" href="/src/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Navigation -->
@@ -73,6 +73,6 @@
     <p>&copy; 2025 Jan Angelo Bacucang. All rights reserved.</p>
   </footer>
 
-  <script src="/src/scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

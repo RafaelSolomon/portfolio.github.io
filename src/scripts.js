@@ -1,44 +1,24 @@
-// ----------------------
-// CV & Headshot Loader
-// ----------------------
-async function loadCV() {
-  try {
-    const res = await fetch("/api/get-latest?type=cv");
-    const data = await res.json();
-    const cvLink = document.getElementById("cv-link");
-    if (cvLink && data.url) {
-      cvLink.href = data.url;
-      cvLink.style.display = "inline"; // make visible
+// Smooth scroll nav
+document.querySelectorAll("nav a[href^='#']").forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+// Fade-in sections
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
     }
-  } catch (err) {
-    console.error("Failed to load CV:", err);
-  }
-}
+  });
+}, { threshold: 0.2 });
 
-async function loadHeadshot() {
-  try {
-    const res = await fetch("/api/get-latest?type=headshot");
-    const data = await res.json();
-    const headshot = document.getElementById("headshot");
-    if (headshot && data.url) {
-      headshot.src = data.url;
-      headshot.style.display = "block"; // make visible
-    }
-  } catch (err) {
-    console.error("Failed to load headshot:", err);
-  }
-}
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-// ----------------------
-// Page Init
-// ----------------------
-document.addEventListener("DOMContentLoaded", () => {
-  // Load dynamic assets
-  loadCV();
-  loadHeadshot();
-
-  // If you already had other DOMContentLoaded code (menus, animations, etc.),
-  // keep it here. Example:
-  // initNavbar();
-  // initAnimations();
+// CTA button scrolls to contact
+document.getElementById("cta-btn").addEventListener("click", () => {
+  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
 });

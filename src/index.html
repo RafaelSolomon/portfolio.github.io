@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jan Angelo Bacucang, PhRN — AI Trainer, Medical Records Reviewer, NY WCB Claims Adjudicator</title>
-  <link rel="stylesheet" href="/src/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/public/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body>
   <!-- Navigation -->
@@ -21,8 +26,8 @@
     <img 
       id="headshot"
       class="profile-img"
-      src=""
-      alt="Jan Angelo Bacucang — Professional Headshot"
+      src="/public/headshot.png"
+      alt="Headshot of Jan Angelo Bacucang"
     />
 
     <!-- Name & Title -->
@@ -30,13 +35,13 @@
     <p class="subtitle">AI Trainer · Medical Records Reviewer · NY WCB Claims Adjudicator</p>
 
     <!-- CV Download Button -->
-    <a id="cv-link" href="#" download class="btn btn-primary hidden">
+    <a id="cv-link" href="/public/cv.pdf" download class="btn btn-primary">
       📄 Download CV
     </a>
 
     <!-- Intro Video -->
-    <video class="intro-video" controls>
-      <source src="assets/intro.mp4" type="video/mp4">
+    <video class="intro-video" autoplay muted loop playsinline>
+      <source src="/public/intro.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </section>
@@ -44,7 +49,10 @@
   <!-- About Section -->
   <section id="about" class="fade-in">
     <h2>About Me</h2>
-    <p>Detail-oriented AI trainer and healthcare professional with expertise in claims adjudication and medical record review...</p>
+    <p>
+      Detail-oriented AI trainer and healthcare professional with expertise in claims adjudication 
+      and medical record review...
+    </p>
   </section>
 
   <!-- Experience Section -->
@@ -73,6 +81,7 @@
     <p>&copy; 2025 Jan Angelo Bacucang. All rights reserved.</p>
   </footer>
 
-  <script src="/src/scripts.js"></script>
+  <!-- Scripts -->
+  <script src="/src/scripts.js" defer></script>
 </body>
 </html>
